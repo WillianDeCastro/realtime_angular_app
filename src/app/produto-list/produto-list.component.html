@@ -1,0 +1,24 @@
+<!-- src/app/components/produto-list/produto-list.component.html -->
+<h2>Lista de Produtos</h2>
+
+<!-- Radio buttons to pick clienteId -->
+<div>
+  <label *ngFor="let id of clientes" style="margin-right: 1rem;">
+    <input
+      type="radio"
+      name="cliente"
+      [value]="id"
+      [(ngModel)]="clienteId"
+      (change)="onClienteChange()"
+    />
+    Cliente {{ id }}
+  </label>
+</div>
+
+<button (click)="adicionarProduto()">Adicionar Produto</button>
+
+<ul>
+  <li *ngFor="let p of produtos$ | async">
+    {{ p.nome }} - {{ p.preco  }}
+  </li>
+</ul>
